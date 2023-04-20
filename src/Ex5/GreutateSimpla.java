@@ -1,11 +1,14 @@
 package Ex5;
 
 public class GreutateSimpla extends Greutate {
-public GreutateSimpla(double capacitate) {
-super(capacitate);
+
+int capacitate;
+	
+public GreutateSimpla(int capacitate) {
+this.capacitate = capacitate;
 }
 
-public double capacitate() {
-return getCapacitate();
+public int capacitate() {
+return capacitate();
 }
 }

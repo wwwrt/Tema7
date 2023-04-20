@@ -1,26 +1,43 @@
 package Ex5;
 
+import java.util.ArrayList;
+
 public class GreutateMultipla extends Greutate {
-private Greutate[] componente;
 
-public GreutateMultipla(Greutate[] componente) {
-super(calculeazaCapacitate(componente));
-this.componente = componente;
-}
+	
+	private ArrayList <Greutate> greutati;
+	
+	
+	
+	public GreutateMultipla(double capacitate, ArrayList<Greutate> greutati) {
+		
+		this.greutati = greutati;
+	}
 
-private static double calculeazaCapacitate(Greutate[] componente) {
-double capacitate = 0;
-for (Greutate greutate : componente) {
-capacitate += greutate.capacitate();
-}
-return capacitate;
-}
+	public void insertGreutate(Greutate g) {
+		greutati.add(g);
+		
+	}
+	
+	public void removeGreutate(Greutate g) {
+		greutati.remove(g);
+		
+	}
+	
 
-public Greutate[] getComponente() {
-return componente;
-}
+	public int capacitate() {
+		int capacitate = 0;
+		for (Greutate g : greutati)
+			capacitate += g.capacitate();
+	return capacitate;	
+	}
 
-public double capacitate() {
-return calculeazaCapacitate(componente);
-}
+	
+	public String toString() {
+		return "GreutateMultipla[" + capacitate() + "]";
+		
+	}
+
+
+
 }

@@ -1,28 +1,42 @@
 package Ex5;
 
+
+import java.util.ArrayList;
+
 public class ColectieGreutati {
-    private Greutate[] colectie;
-    private int numarGreutati;
-    private int capacitateMaxima;
 
-    public ColectieGreutati(int capacitateMaxima) {
-        this.colectie = new Greutate[capacitateMaxima];
-        this.numarGreutati = 0;
-        this.capacitateMaxima = capacitateMaxima;
-    }
-
-    public void adaugaGreutate(Greutate g) {
-        if (numarGreutati < capacitateMaxima) {
-            colectie[numarGreutati] = g;
-            numarGreutati++;
-        }
-    }
-
-    public double getCapacitateTotala() {
-        double capacitateTotala = 0;
-        for (int i = 0; i < numarGreutati; i++) {
-            capacitateTotala += colectie[i].capacitate();
-        }
-        return capacitateTotala;
-    }
+	private int limita;
+	private ArrayList<Greutate> colectie;
+	
+	public ColectieGreutati (int limita) {
+		
+		if (limita <=0)
+			limita = 1;
+		this.limita = limita;
+		colectie = new ArrayList<Greutate>();
+		
+	}
+	
+	
+	public boolean adaugaGreutate(Greutate g) {
+		if (colectie.size() == limita ) {
+			System.out.println("S-a atins limita de greutati suportate!");
+			return false;
+		}
+		
+		return colectie.add(g);
+		
+	}
+	
+	public double medie() {
+		double media = capacitateTotala() / colectie.size();
+		return media;	
+	}
+	
+	public double capacitateTotala() {
+		int capacitate = 0;
+		for (Greutate g : colectie)
+			capacitate += g.capacitate();
+		return capacitate;
+	}
 }
